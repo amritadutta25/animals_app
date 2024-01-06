@@ -15,7 +15,7 @@ const router = express.Router()
 // Route Controllers
 ////////////////////////
 
-// index route
+// index route - get request to /animals
 router.get("/", async (req, res) => {
     try {
       // get all animals
@@ -23,6 +23,23 @@ router.get("/", async (req, res) => {
       // render a template
       // animals/index.ejs = ./views/animals/index.ejs
       res.render("animals/index.ejs", { animals });
+    } catch (error) {
+      console.log("-----", error.message, "------");
+      res.status(400).send("error, read logs for details");
+    }
+  })
+
+// show route  - Get request to /animals/:id
+router.get("/:id", async (req, res) => {
+    try {
+      // get the id from params
+      const id = req.params.id
+  
+      // find the particular animal from the database
+      const animal = await Animal.findById(id);
+  
+      // render the template with the animal
+      res.render("animals/show.ejs", { animal });
     } catch (error) {
       console.log("-----", error.message, "------");
       res.status(400).send("error, read logs for details");
