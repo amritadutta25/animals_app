@@ -60,6 +60,40 @@ router.post("/", async (req, res) => {
         res.status(400).send("error, read logs for details")
         }
 })
+
+// Edit Route - Get request to /animals/:id/edit
+router.get("/:id/edit", async (req, res) => {
+    try {
+        // get the id from params
+        const id = req.params.id
+        // get the animal from the database
+        const animal = await Animal.findById(id)
+        //render the template
+        res.render("animals/edit.ejs", { animal })
+        } catch (error) {
+        console.log("-----", error.message, "------")
+        res.status(400).send("error, read logs for details")
+        }
+})
+  
+// Update Route - Put request to /animals/:id
+router.put("/:id", async (req, res) => {
+    try {
+        // get the id
+        const id = req.params.id
+        // update 'extinct' in req.body
+        req.body.extinct = req.body.extinct === "on" ? true : false
+
+        // update the animal in the database
+        await Animal.findByIdAndUpdate(id, req.body)
+
+        // res.redirect back to show page
+        res.redirect(`/animals/${id}`)
+    } catch (error) {
+        console.log("-----", error.message, "------");
+        res.status(400).send("error, read logs for details")
+    }
+})
   
 
 // show route  - Get request to /animals/:id
