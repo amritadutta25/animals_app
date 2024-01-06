@@ -29,6 +29,12 @@ router.get("/", async (req, res) => {
     }
   })
 
+// New Route
+router.get("/new", (req, res) => {
+    res.render("animals/new.ejs")
+})
+  
+
 // show route  - Get request to /animals/:id
 router.get("/:id", async (req, res) => {
     try {

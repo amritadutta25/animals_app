@@ -1,8 +1,29 @@
-h1 {
-    text-align: center;
+header {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    background-color: rgb(241, 218, 187);
+    padding: 0 30px;
+    padding-top: 10px;
+    margin-bottom: 35px;
 }
+
+header a {
+    padding-top: 20px;
+    font-size: 1.3em;
+}
+
 
 /* SHOW ROUTE */
 .show-page {
     text-align: center;
+}
+
+/* NEW Route */
+h1 {
+    text-align: center;
+}
+
+form {
+    padding: 0 20px;
 }
