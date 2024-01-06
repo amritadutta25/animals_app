@@ -6,6 +6,9 @@ const express = require("express") // import express
 const morgan = require("morgan") //import morgan
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
+const Animal = require("./models/animal.js")
+const seedData = require("./models/seed.js")
+const AnimalRouter = require("./controllers/animal.js")
 
 const app = express()
 
@@ -17,6 +20,7 @@ app.use(morgan("dev")) //logger
 app.use(methodOverride("_method")) // override form submissions
 app.use(express.urlencoded({ extended: true })) // parse urlencoded bodies
 app.use(express.static("public")) // serve files from public folder
+app.use("/animals", AnimalRouter)
 
 
 

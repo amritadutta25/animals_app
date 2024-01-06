@@ -20,7 +20,7 @@ const animalSchema = new Schema({
 })
 
 // Model - object for interacting with the database
-const Fruit = model("Animal", animalSchema)
+const Animal = model("Animal", animalSchema)
 
 //////////////////////////////////
 // export the model
