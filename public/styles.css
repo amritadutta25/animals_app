@@ -13,6 +13,11 @@ header a {
     font-size: 1.3em;
 }
 
+/* Index route */
+.index-page {
+    padding-left: 30px;
+}
+
 
 /* SHOW ROUTE */
 .show-page {

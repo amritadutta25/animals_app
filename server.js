@@ -5,10 +5,12 @@ require("dotenv").config() // Load env variables
 const express = require("express") // import express
 const morgan = require("morgan") //import morgan
 const methodOverride = require("method-override")
-const mongoose = require("mongoose")
-const Animal = require("./models/animal.js")
-const seedData = require("./models/seed.js")
 const AnimalRouter = require("./controllers/animal.js")
+
+// these 3 imports not required in server.js since their dependecies ahve moved to other files and they have been imported there
+// const mongoose = require("mongoose")
+// const Animal = require("./models/animal.js")
+// const seedData = require("./models/seed.js")
 
 const app = express()
 
