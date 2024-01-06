@@ -34,6 +34,16 @@ router.get("/new", (req, res) => {
     res.render("animals/new.ejs")
 })
 
+// delete route - delete request to /animals/:id
+router.delete("/:id", async (req, res) => {
+    // get the id
+    const id = req.params.id
+    // delete the animal
+    await Animal.findByIdAndDelete(id)
+    // redirect to main page
+    res.redirect("/animals")
+})
+
 // Create Route - Post request to /animals
 router.post("/", async (req, res) => {
     try {
