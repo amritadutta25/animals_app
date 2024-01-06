@@ -33,6 +33,23 @@ router.get("/", async (req, res) => {
 router.get("/new", (req, res) => {
     res.render("animals/new.ejs")
 })
+
+// Create Route - Post request to /animals
+router.post("/", async (req, res) => {
+    try {
+        // check if extinct or not
+        req.body.extinct = req.body.extinct === "on" ? true : false
+
+        // create the animal in the database
+        await Animal.create(req.body)
+
+        // redirect back to main page
+        res.redirect("/animals")
+        } catch (error) {
+        console.log("-----", error.message, "------")
+        res.status(400).send("error, read logs for details")
+        }
+})
   
 
 // show route  - Get request to /animals/:id
